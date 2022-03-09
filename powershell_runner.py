@@ -4,7 +4,7 @@ import os
 
 
 def run(cmd):
-    completed = subprocess.run(["powershell", "-Command", cmd], capture_output=True)
+    completed = subprocess.run(["pwsh", "-Command", cmd], capture_output=True)
     return completed
 
 # test powershell capabilities
@@ -27,6 +27,7 @@ while True:
         # get the command from prompt
     command = input(f"PS | {os.getcwd()} $> ")
     splited_command = command.split()
+    print(command + " - " + str(splited_command))
     # send the command
     if command.lower() == "exit":
         # if the command is exit, just break out of the loop

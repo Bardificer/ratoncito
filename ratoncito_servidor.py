@@ -40,4 +40,4 @@ while True:
     # split command output and current directory
     results, cwd = output.split(SEPARATOR)
     # print output
-    print(results.stdout.decode())
+    print(results)

